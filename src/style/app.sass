@@ -1,21 +1,23 @@
 @import './mast.sass'
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap')
 
+%center
+  justify-content: center
+  align-items: center
+
 .container
   display: flex
   flex-direction: column
-  height: 100vh
-  justify-content: center
-  align-items: center
+  // min-height: 100vh
   font-family: Montserrat
+  @extend %center
 
 .mast
   display: flex
   width: 100%
   height: 15%
   background: #1088eb
-  justify-content: center
-  align-items: center
+  @extend %center
 
 .footer
   display: flex
@@ -23,3 +25,37 @@
 
 .content
   height: 80%
+  display: flex
+  flex-direction: column
+  &__top
+    flex-direction: row
+    height: 5vw
+    padding: .5em
+
+.label
+  margin: 0.5 em
+
+// .select
+//   font-size: 16px
+//   font-weight: 700
+//   padding: .6em 1.4em .5em .8em
+//   width: 100%
+//   max-width: 100%
+//   box-sizing: border-box
+//   margin: 0
+//   border: 1px solid #aaa
+//   box-shadow: 0 1px 0 1px rgba(0,0,0,.04)
+//   border-radius: .5em
+//   -moz-appearance: none
+//   -webkit-appearance: none
+//   appearance: none
+//   background-color: #fff
+
+// .filters
+//   width: 100vh
+//   display: flex
+//   flex-direction: row
+
+// .filter
+//   width: 50%
+//   margin: .5em .5em
