@@ -1,12 +1,16 @@
 import React from 'react';
 import { DogsList } from '../../container/dogsList';
 
-const Content = () => (
-  <div className="content">
-    <div className="content__top">
+const Content = () => {
+  const unClickHandler = () => {
+    // console.log('dasdsa');
+    return 'nonclicked';
+  };
+  return (
+    <div className="content" onClick={unClickHandler}>
       <DogsList />
     </div>
-  </div>
-);
+  );
+};
 
 export default Content;

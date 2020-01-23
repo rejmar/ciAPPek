@@ -1,4 +1,6 @@
 @import './mast.sass'
+@import './tooltip'
+@import '/spinner'
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap')
 
 %center
@@ -25,16 +27,16 @@
 
 .content
   height: 80%
+  width: 100%
   display: flex
   flex-direction: column
-  &__top
-    flex-direction: row
-    height: 5vw
-    padding: .5em
+  @extend %center
 
 .label
   margin: 0.5 em
 
+.dogsList
+  // border: 2px solid black
 // .select
 //   font-size: 16px
 //   font-weight: 700

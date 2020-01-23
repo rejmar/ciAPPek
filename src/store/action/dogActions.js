@@ -20,6 +20,25 @@ export const fetchDogsFail = () => {
   };
 };
 
+export const fetchImageStart = () => {
+  return {
+    type: actionTypes.FETCH_IMAGE_START
+  };
+};
+
+export const fetchImageSuccess = image => {
+  return {
+    type: actionTypes.FETCH_IMAGE_SUCCESS,
+    image: image
+  };
+};
+
+export const fetchImageFail = () => {
+  return {
+    type: actionTypes.FETCH_IMAGE_FAIL
+  };
+};
+
 export const getDogs = () => {
   return dispatch => {
     axios
@@ -29,6 +48,20 @@ export const getDogs = () => {
       })
       .catch(error => {
         dispatch(fetchDogsFail());
+      });
+  };
+};
+
+export const getImage = breed => {
+  return dispatch => {
+    dispatch(fetchImageStart());
+    axios
+      .get(`https://dog.ceo/api/breed/${breed}/images/random`)
+      .then(response => {
+        dispatch(fetchImageSuccess(response.data.message));
+      })
+      .catch(error => {
+        dispatch(fetchImageFail());
       });
   };
 };
