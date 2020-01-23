@@ -3,7 +3,8 @@ import * as actionTypes from '../action/actionTypes';
 const initialState = {
   loading: false,
   dogs: [],
-  image: ''
+  image: '',
+  breed: ''
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -20,6 +21,12 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, loading: false, image: action.image };
     case actionTypes.FETCH_IMAGE_FAIL:
       return { ...state, loading: false };
+    case actionTypes.SET_BREED_START:
+      return { ...state, breed: '' };
+    case actionTypes.SET_BREED_SUCCESS:
+      return { ...state, breed: action.breed };
+    case actionTypes.SET_BREED_FAIL:
+      return { ...state, breed: '' };
     default:
       return state;
   }

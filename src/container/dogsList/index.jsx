@@ -1,15 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Label } from '../../component/label';
 import * as actions from '../../store/action/dogActions';
-import { Tooltip } from '../../component/tooltip';
 import ListItem from '../../component/listItem';
 
 export const DogsList = props => {
   const dispatch = useDispatch();
   const dogs = useSelector(state => state.dogs);
-  const image = useSelector(state => state.image);
-  const loading = useSelector(state => state.loading);
 
   useEffect(() => {
     dispatch(actions.getDogs());
@@ -23,15 +20,13 @@ export const DogsList = props => {
   return (
     <div className="dogsList">
       <Label>Dogs:</Label>
-      <ul>
+      <ul className="dogsList__base">
         {Object.entries(dogs).map(dog =>
           dog[1].length > 0 ? (
             <ListItem
               item={dog[0]}
               breed={dog[0]}
               onItemClick={itemClickHandler}
-              image={image}
-              loading={loading}
             >
               <ul>
                 {dog[1].map(subbreed => (
@@ -39,8 +34,6 @@ export const DogsList = props => {
                     item={subbreed}
                     breed={dog[0]}
                     onItemClick={itemClickHandler}
-                    image={image}
-                    loading={loading}
                   />
                 ))}
               </ul>
@@ -50,8 +43,6 @@ export const DogsList = props => {
               item={dog[0]}
               breed={dog[0]}
               onItemClick={itemClickHandler}
-              image={image}
-              loading={loading}
             />
           )
         )}

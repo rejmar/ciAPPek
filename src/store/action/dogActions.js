@@ -32,10 +32,28 @@ export const fetchImageSuccess = image => {
     image: image
   };
 };
-
 export const fetchImageFail = () => {
   return {
     type: actionTypes.FETCH_IMAGE_FAIL
+  };
+};
+
+export const setBreedStart = () => {
+  return {
+    type: actionTypes.SET_BREED_START
+  };
+};
+
+export const setBreedSuccess = breed => {
+  return {
+    type: actionTypes.SET_BREED_SUCCESS,
+    breed: breed
+  };
+};
+
+export const setBreedFail = () => {
+  return {
+    type: actionTypes.SET_BREED_FAIL
   };
 };
 
@@ -58,9 +76,11 @@ export const getImage = breed => {
     axios
       .get(`https://dog.ceo/api/breed/${breed}/images/random`)
       .then(response => {
+        dispatch(setBreedSuccess(breed));
         dispatch(fetchImageSuccess(response.data.message));
       })
       .catch(error => {
+        dispatch(setBreedFail());
         dispatch(fetchImageFail());
       });
   };
