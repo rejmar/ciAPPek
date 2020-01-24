@@ -1,7 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { Label } from '../../component/label';
-import * as actions from '../../store/action/dogActions';
+import * as actions from '../../store/action';
 import ListItem from '../../component/listItem';
 
 export const DogsList = () => {

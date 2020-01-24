@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import * as actions from '../../../store/action/dogActions';
+import * as actions from '../../../store/action';
 import { Select } from '../../../component/select';
 
 export const TopContent = () => {

@@ -20,24 +20,6 @@ const fetchDogsFail = () => {
   };
 };
 
-const fetchImagesStart = () => {
-  return {
-    type: actionTypes.FETCH_IMAGES_START
-  };
-};
-
-const fetchImagesSuccess = images => {
-  return {
-    type: actionTypes.FETCH_IMAGES_SUCCESS,
-    images: images
-  };
-};
-const fetchImagesFail = () => {
-  return {
-    type: actionTypes.FETCH_IMAGES_FAIL
-  };
-};
-
 const setBreedStart = () => {
   return {
     type: actionTypes.SET_BREED_START
@@ -51,7 +33,7 @@ export const setBreedSuccess = breed => {
   };
 };
 
-const setBreedFail = () => {
+export const setBreedFail = () => {
   return {
     type: actionTypes.SET_BREED_FAIL
   };
@@ -82,20 +64,5 @@ export const getDogs = () => {
 export const setBreed = breed => {
   return dispatch => {
     dispatch(setBreedSuccess(breed));
-  };
-};
-
-export const getImages = (breed, counter) => {
-  return dispatch => {
-    dispatch(fetchImagesStart());
-    axios
-      .get(`https://dog.ceo/api/breed/${breed}/images/random/${counter}`)
-      .then(response => {
-        dispatch(fetchImagesSuccess(response.data.message));
-      })
-      .catch(error => {
-        dispatch(setBreedFail());
-        dispatch(fetchImagesFail());
-      });
   };
 };

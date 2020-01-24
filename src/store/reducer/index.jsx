@@ -8,7 +8,7 @@ const initialState = {
   counter: 0
 };
 
-const rootReducer = (state = initialState, action) => {
+export const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_DOGS_START:
       return { ...state, loading: true };

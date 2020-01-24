@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { TopContent } from './topContent';
 import { BottomContent } from './bottomContent';
-import * as actions from '../../store/action/dogActions';
+import * as actions from '../../store/action';
 
 import UIfx from 'uifx';
 import bark from '../../assets/woof.mp3';
