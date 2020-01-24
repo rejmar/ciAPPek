@@ -3,6 +3,6 @@ import Logo from '../../assets/dog.png';
 
 export const Mast = () => (
   <div className="mast">
-    <img src={Logo} alt="dog logo" />
+    <img onClick={() => window.location.reload()} src={Logo} alt="dog logo" />
   </div>
 );

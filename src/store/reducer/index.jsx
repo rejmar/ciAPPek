@@ -3,8 +3,9 @@ import * as actionTypes from '../action/actionTypes';
 const initialState = {
   loading: false,
   dogs: [],
-  image: '',
-  breed: ''
+  images: [],
+  breed: '',
+  counter: 0
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -15,18 +16,20 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, loading: false, dogs: action.dogs };
     case actionTypes.FETCH_DOGS_FAIL:
       return { ...state, loading: false };
-    case actionTypes.FETCH_IMAGE_START:
+    case actionTypes.FETCH_IMAGES_START:
       return { ...state, loading: true };
-    case actionTypes.FETCH_IMAGE_SUCCESS:
-      return { ...state, loading: false, image: action.image };
-    case actionTypes.FETCH_IMAGE_FAIL:
+    case actionTypes.FETCH_IMAGES_SUCCESS:
+      return { ...state, loading: false, images: action.images };
+    case actionTypes.FETCH_IMAGES_FAIL:
       return { ...state, loading: false };
     case actionTypes.SET_BREED_START:
       return { ...state, breed: '' };
     case actionTypes.SET_BREED_SUCCESS:
-      return { ...state, breed: action.breed };
+      return { ...state, breed: action.breed, counter: 0 };
     case actionTypes.SET_BREED_FAIL:
       return { ...state, breed: '' };
+    case actionTypes.SET_COUNTER:
+      return { ...state, counter: action.counter };
     default:
       return state;
   }

@@ -1,31 +1,29 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Label } from '../../component/label';
 import * as actions from '../../store/action/dogActions';
 import ListItem from '../../component/listItem';
 
-export const DogsList = props => {
+export const DogsList = () => {
   const dispatch = useDispatch();
   const dogs = useSelector(state => state.dogs);
-
-  useEffect(() => {
-    dispatch(actions.getDogs());
-  }, []);
+  const selectedBreed = useSelector(state => state.breed);
 
   const itemClickHandler = (event, breed) => {
     event.stopPropagation();
-    dispatch(actions.getImage(breed));
+    dispatch(actions.setBreed(breed));
   };
 
   return (
     <div className="dogsList">
-      <Label>Dogs:</Label>
+      <Label>Choose a dog:</Label>
       <ul className="dogsList__base">
         {Object.entries(dogs).map(dog =>
           dog[1].length > 0 ? (
             <ListItem
               item={dog[0]}
               breed={dog[0]}
+              selectedBreed={selectedBreed}
               onItemClick={itemClickHandler}
             >
               <ul>
@@ -33,6 +31,7 @@ export const DogsList = props => {
                   <ListItem
                     item={subbreed}
                     breed={dog[0]}
+                    selectedBreed={selectedBreed}
                     onItemClick={itemClickHandler}
                   />
                 ))}
@@ -42,6 +41,7 @@ export const DogsList = props => {
             <ListItem
               item={dog[0]}
               breed={dog[0]}
+              selectedBreed={selectedBreed}
               onItemClick={itemClickHandler}
             />
           )

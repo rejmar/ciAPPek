@@ -1,29 +1,30 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { DogsList } from '../../container/dogsList';
-import Spinner from '../../component/spinner';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { TopContent } from './topContent';
+import { BottomContent } from './bottomContent';
+import * as actions from '../../store/action/dogActions';
+
+import UIfx from 'uifx';
+import bark from '../../assets/woof.mp3';
 
 const Content = () => {
-  const loading = useSelector(state => state.loading);
   const breed = useSelector(state => state.breed);
-  const image = useSelector(state => state.image);
+  const dispatch = useDispatch();
+
+  const woof = new UIfx(bark, {
+    volume: 0.5
+  });
+
+  useEffect(() => {
+    woof.play();
+    dispatch(actions.getDogs());
+  }, [breed]);
+
   return (
     <div className="content">
-      <div className="content__top">
-        <button>-</button> 1 <button>+</button>
-      </div>
-      <div className="content__dogs">
-        <div className="content__list">
-          <DogsList />
-        </div>
-        <div className="content__images">
-          {loading ? (
-            <Spinner />
-          ) : (
-            <img className="content__images__image" alt={breed} src={image} />
-          )}
-        </div>
-      </div>
+      <TopContent />
+      <BottomContent />
     </div>
   );
 };

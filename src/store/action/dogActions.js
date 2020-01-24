@@ -1,44 +1,44 @@
 import axios from 'axios';
 import * as actionTypes from './actionTypes';
 
-export const fetchDogsStart = () => {
+const fetchDogsStart = () => {
   return {
     type: actionTypes.FETCH_DOGS_START
   };
 };
 
-export const fetchDogsSuccess = dogs => {
+const fetchDogsSuccess = dogs => {
   return {
     type: actionTypes.FETCH_DOGS_SUCCESS,
     dogs: dogs
   };
 };
 
-export const fetchDogsFail = () => {
+const fetchDogsFail = () => {
   return {
     type: actionTypes.FETCH_DOGS_FAIL
   };
 };
 
-export const fetchImageStart = () => {
+const fetchImagesStart = () => {
   return {
-    type: actionTypes.FETCH_IMAGE_START
+    type: actionTypes.FETCH_IMAGES_START
   };
 };
 
-export const fetchImageSuccess = image => {
+const fetchImagesSuccess = images => {
   return {
-    type: actionTypes.FETCH_IMAGE_SUCCESS,
-    image: image
+    type: actionTypes.FETCH_IMAGES_SUCCESS,
+    images: images
   };
 };
-export const fetchImageFail = () => {
+const fetchImagesFail = () => {
   return {
-    type: actionTypes.FETCH_IMAGE_FAIL
+    type: actionTypes.FETCH_IMAGES_FAIL
   };
 };
 
-export const setBreedStart = () => {
+const setBreedStart = () => {
   return {
     type: actionTypes.SET_BREED_START
   };
@@ -51,9 +51,18 @@ export const setBreedSuccess = breed => {
   };
 };
 
-export const setBreedFail = () => {
+const setBreedFail = () => {
   return {
     type: actionTypes.SET_BREED_FAIL
+  };
+};
+
+export const setCounter = counter => {
+  return dispatch => {
+    dispatch({
+      type: actionTypes.SET_COUNTER,
+      counter: counter
+    });
   };
 };
 
@@ -70,18 +79,23 @@ export const getDogs = () => {
   };
 };
 
-export const getImage = breed => {
+export const setBreed = breed => {
   return dispatch => {
-    dispatch(fetchImageStart());
+    dispatch(setBreedSuccess(breed));
+  };
+};
+
+export const getImages = (breed, counter) => {
+  return dispatch => {
+    dispatch(fetchImagesStart());
     axios
-      .get(`https://dog.ceo/api/breed/${breed}/images/random`)
+      .get(`https://dog.ceo/api/breed/${breed}/images/random/${counter}`)
       .then(response => {
-        dispatch(setBreedSuccess(breed));
-        dispatch(fetchImageSuccess(response.data.message));
+        dispatch(fetchImagesSuccess(response.data.message));
       })
       .catch(error => {
         dispatch(setBreedFail());
-        dispatch(fetchImageFail());
+        dispatch(fetchImagesFail());
       });
   };
 };

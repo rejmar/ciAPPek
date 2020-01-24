@@ -7,7 +7,13 @@ const ListItem = props => {
 
   return (
     <li onClick={handleClick} key={props.item}>
-      <div className="item">{props.item}</div>
+      <div
+        className={`item ${
+          props.selectedBreed === props.item ? 'item--selected' : ''
+        }`}
+      >
+        {props.item}
+      </div>
       {props.children}
     </li>
   );
