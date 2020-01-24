@@ -20,34 +20,6 @@ const fetchDogsFail = () => {
   };
 };
 
-const setBreedStart = () => {
-  return {
-    type: actionTypes.SET_BREED_START
-  };
-};
-
-export const setBreedSuccess = breed => {
-  return {
-    type: actionTypes.SET_BREED_SUCCESS,
-    breed: breed
-  };
-};
-
-export const setBreedFail = () => {
-  return {
-    type: actionTypes.SET_BREED_FAIL
-  };
-};
-
-export const setCounter = counter => {
-  return dispatch => {
-    dispatch({
-      type: actionTypes.SET_COUNTER,
-      counter: counter
-    });
-  };
-};
-
 export const getDogs = () => {
   return dispatch => {
     axios
@@ -58,11 +30,5 @@ export const getDogs = () => {
       .catch(error => {
         dispatch(fetchDogsFail());
       });
-  };
-};
-
-export const setBreed = breed => {
-  return dispatch => {
-    dispatch(setBreedSuccess(breed));
   };
 };

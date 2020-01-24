@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as actionTypes from './actionTypes';
-import * as dogActions from './dogActions';
+import * as breedActions from './breedActions';
 
 const fetchImagesStart = () => {
   return {
@@ -14,7 +14,7 @@ const fetchImagesSuccess = images => {
     images: images
   };
 };
-const fetchImagesFail = () => {
+export const fetchImagesFail = () => {
   return {
     type: actionTypes.FETCH_IMAGES_FAIL
   };
@@ -29,7 +29,7 @@ export const getImages = (breed, counter) => {
         dispatch(fetchImagesSuccess(response.data.message));
       })
       .catch(error => {
-        dispatch(dogActions.setBreedFail());
+        dispatch(breedActions.setBreedFail());
         dispatch(fetchImagesFail());
       });
   };

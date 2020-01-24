@@ -11,3 +11,5 @@ export const SET_BREED_SUCCESS = 'SET_BREED_SUCCESS';
 export const SET_BREED_FAIL = 'SET_BREED_FAIL';
 
 export const SET_COUNTER = 'SET_COUNTER';
+
+export const SET_LOCK = 'SET_LOCK';

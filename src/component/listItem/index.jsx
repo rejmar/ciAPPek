@@ -6,7 +6,7 @@ const ListItem = props => {
   };
 
   return (
-    <li onClick={handleClick} key={props.item}>
+    <li onClick={handleClick} key={`${props.breed + '_' + props.item}`}>
       <div
         className={`item ${
           props.selectedBreed === props.item ? 'item--selected' : ''
